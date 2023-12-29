@@ -1,0 +1,59 @@
+:root {
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#game-container {
+  border: thin black;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 15px;
+  padding: 15px;
+  width: 600px;
+  height: 600px;
+}
+
+.square {
+  display: flex;
+  border: thin solid green;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+}
+
+.square:hover {
+
+}
+
+form {
+  display: flex;
+  gap: 30px;
+}
+
+.player-container {
+  display: flex;
+  gap: 10px;
+}
+
+.player {
+  font-size: 1.25rem;
+}
