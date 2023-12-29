@@ -3,11 +3,35 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 2fr 7fr 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
+  justify-content: center;
   gap: 20px;
+  background-color: black;
+  background-image: url("images/wilmer-martinez-8WR86Z_mLms-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.701);
+}
+
+h1 {
+  font-size: 4rem;
+  font-family: 'Kanit', sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-shadow: 2px 2px 8px rgb(255, 0, 255);
+  letter-spacing: 5px;
 }
 
 #app-container {
@@ -15,38 +39,41 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 #game-container {
-  border: thin black;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 15px;
-  padding: 15px;
   width: 600px;
   height: 600px;
 }
 
 .square {
   display: flex;
-  border: thin solid green;
-  background-color: black;
-  border-radius: 5px;
-  color: white;
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  color: rgb(252, 252, 252);
   align-items: center;
   justify-content: center;
-  font-size: 6rem;
+  font-size: 8rem;
+  font-family: 'Kanit', sans-serif;
+  border: 3px solid rgb(255, 0, 255);
 }
 
 .square:hover {
-
+  text-shadow: 0px 0px 15px rgb(255, 0, 255);
+  box-shadow: 0px 0px 35px rgb(255, 255, 0);
+  background-color: rgba(0, 0, 0, 0.68);
+  transition: all 0.4s ease 0s;
 }
 
 form {
   display: flex;
   gap: 30px;
+  color: whitesmoke;
 }
 
 .player-container {
@@ -56,4 +83,12 @@ form {
 
 .player {
   font-size: 1.25rem;
+}
+
+footer {
+  grid-row: 3;
+  font-size: 1.15rem;
+  color: whitesmoke;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
 }

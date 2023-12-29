@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
   <title>Tic Tac Toe</title>
 </head>
+
 <body>
-  <header>
-    <h1>Tic Tac Toe</h1>
-  </header>
-  <div id="app-container">
-    <div id="game-container">
-      <div class="square">X</div>
-      <div class="square"></div>
-      <div class="square">O</div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
+  <div class="container">
+    <header>
+      <h1>Tic Tac Toe</h1>
+    </header>
+    <div id="app-container">
+      <div id="game-container">
+        <div class="square">X</div>
+        <div class="square"></div>
+        <div class="square">O</div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+      </div>
+      <form action="#" method="post">
+        <div class="player-container">
+          <label class="player" for="player-1">Player 1</label>
+          <input id="player-1" type="text" placeholder="Enter Name" value="">
+        </div>
+        <div class="player-container">
+          <label class="player" for="player-2">Player 2</label>
+          <input id="player-2" type="text" placeholder="Enter Name" value="">
+        </div>
+      </form>
     </div>
-    <form action="#" method="post">
-      <div class="player-container">
-        <label class="player" for="player-1">Player 1</label>
-        <input id="player-1" type="text" placeholder="Enter Name" value="">
-      </div>
-      <div class="player-container">
-        <label class="player" for="player-2">Player 2</label>
-        <input id="player-2" type="text" placeholder="Enter Name" value="">
-      </div>
-    </form>
+    <footer>
+      <p> &copy; Copyright, Alex Nowrang 2023</p>
+    </footer>
   </div>
-  <footer>
-    <p> &copy; Copyright, Alex Nowrang 2023</p>
-  </footer>
   <script src="app.js"></script>
 </body>
+
 </html>
