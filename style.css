@@ -5,17 +5,20 @@
 body {
   margin: 0;
   padding: 0;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-  background-color: black;
+  height: 100%;
   background-image: url("images/wilmer-martinez-8WR86Z_mLms-unsplash.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.container {
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
 }
 
 header {
@@ -36,6 +39,7 @@ h1 {
 #game-container {
   grid-row: 3;
   display: grid;
+  /*switches to grid upon game start*/
   justify-self: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -46,6 +50,7 @@ h1 {
 
 .square {
   display: flex;
+  /*Switches to flex upon start of game*/
   background-color: rgb(0, 0, 0);
   border-radius: 15px;
   color: rgb(252, 252, 252);
@@ -84,7 +89,7 @@ form {
   grid-row: 4;
   text-align: center;
   font-size: 1.25rem;
-  margin: 0;
+  margin: 0 0 9px 0;
   color: whitesmoke;
 }
 
@@ -94,9 +99,12 @@ a {
 }
 
 footer {
-  grid-row: 5;
+  grid-row: 2 / span 1;
   font-size: 1.15rem;
   color: whitesmoke;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
