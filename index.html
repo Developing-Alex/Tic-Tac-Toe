@@ -16,29 +16,31 @@
     <header>
       <h1>Tic Tac Toe</h1>
     </header>
-
-    <div id="game-container">
-      <div class="square">X</div>
-      <div class="square"></div>
-      <div class="square">O</div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
-      <div class="square"></div>
+    
+    <div class="app-container">
+      <button id="new-game-btn">New Game</button>
+      <div id="game-container">
+        <div class="square">X</div>
+        <div class="square"></div>
+        <div class="square">O</div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+      </div>
     </div>
 
-    <form action="#" method="post">
-      <div class="player-container">
-        <label class="player" for="player-1">Player 1</label>
-        <input id="player-1" type="text" placeholder="Enter Name" value="">
-      </div>
-      <div class="player-container">
-        <label class="player" for="player-2">Player 2</label>
-        <input id="player-2" type="text" placeholder="Enter Name" value="">
-      </div>
-    </form>
+    <dialog>
+      <form action="app2.js" method="dialog">
+        <h2>Choose Your Marker</h2>
+        <div id="markers-container">
+          <input class="markers" id="X-marker" type="button" value="X">
+          <input class="markers" id="O-marker" type="button" value="O">
+        </div>
+      </form>
+    </dialog>
 
     <p id="credit">Photo by<a
         href="https://unsplash.com/@wilmerlens?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Wilmer
@@ -49,7 +51,7 @@
   <footer>
     <p> &copy; Copyright, Alex Nowrang 2023</p>
   </footer>
-  <script src="app.js"></script>
+  <script src="/app2.js"></script>
 </body>
 
 </html>
