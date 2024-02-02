@@ -45,6 +45,7 @@ const Gameboard = function () {
 }
 
 const GameController = function () {
+
   const board = Gameboard();
 
   function CreatePlayer(name, marker) {
@@ -59,4 +60,10 @@ const GameController = function () {
 
   const players = [CreatePlayer('Player One', 'X'), CreatePlayer('Player Two', 'O')];
 
+  let activePlayer = players[0];
+
+  const switchPlayerTurn = () => {
+    activePlayer = activePlayer === players[0] ? players[1] : players[0];
+  };
+  
 }
