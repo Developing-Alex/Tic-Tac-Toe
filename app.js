@@ -75,7 +75,7 @@ const GameController = function () {
     checkWinner(board.getGameboard());
   }
 
-  const printNewRound = (() => {
+  const printNewRound = () => {
     board.printBoard();
     if (checkWinner(board.getGameboard()) === 1){
       console.log('Player One Wins!')
@@ -86,7 +86,7 @@ const GameController = function () {
     }else{
     console.log(`${getActivePlayer()._name}'s turn.`);
     }
-  })();
+  };
 
   const checkWinner = (boardArr) => {
     let result;
@@ -124,6 +124,8 @@ const GameController = function () {
     }
     return result;
   }
+
+  printNewRound();
 
   return {
     playRound
