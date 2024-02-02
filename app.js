@@ -72,5 +72,61 @@ const GameController = function () {
     board.markBoard(move, getActivePlayer()._marker);
     switchPlayerTurn();
     printNewRound(); 
+    checkWinner(board.getGameboard());
+  }
+
+  const printNewRound = (() => {
+    board.printBoard();
+    if (checkWinner(board.getGameboard()) === 1){
+      console.log('Player One Wins!')
+    }else if(checkWinner(board.getGameboard()) === 2){
+      console.log('Player Two Wins!')
+    }else if(checkWinner(board.getGameboard()) === 3){
+      console.log("It's a draw!")
+    }else{
+    console.log(`${getActivePlayer()._name}'s turn.`);
+    }
+  })();
+
+  const checkWinner = (boardArr) => {
+    let result;
+    let draw = true;
+    
+    boardArr.forEach(square => {
+      if(square === ''){
+        draw = false
+      }
+    });
+
+    if (boardArr[0] === 'X' && boardArr[1] === 'X' && boardArr[2] === 'X'
+      || boardArr[3] === 'X' && boardArr[4] === 'X' && boardArr[5] === 'X'
+      || boardArr[6] === 'X' && boardArr[7] === 'X' && boardArr[8] === 'X'
+      || boardArr[0] === 'X' && boardArr[3] === 'X' && boardArr[6] === 'X'
+      || boardArr[1] === 'X' && boardArr[4] === 'X' && boardArr[7] === 'X'
+      || boardArr[2] === 'X' && boardArr[5] === 'X' && boardArr[8] === 'X'
+      || boardArr[0] === 'X' && boardArr[4] === 'X' && boardArr[8] === 'X'
+      || boardArr[2] === 'X' && boardArr[4] === 'X' && boardArr[6] === 'X') {
+      result = 1;
+    }
+    else if (boardArr[0] === 'O' && boardArr[1] === 'O' && boardArr[2] === 'O'
+      || boardArr[3] === 'O' && boardArr[4] === 'O' && boardArr[5] === 'O'
+      || boardArr[6] === 'O' && boardArr[7] === 'O' && boardArr[8] === 'O'
+      || boardArr[0] === 'O' && boardArr[3] === 'O' && boardArr[6] === 'O'
+      || boardArr[1] === 'O' && boardArr[4] === 'O' && boardArr[7] === 'O'
+      || boardArr[2] === 'O' && boardArr[5] === 'O' && boardArr[8] === 'O'
+      || boardArr[0] === 'O' && boardArr[4] === 'O' && boardArr[8] === 'O'
+      || boardArr[2] === 'O' && boardArr[4] === 'O' && boardArr[6] === 'O') {
+      result = 2;
+    } else if (draw){
+      result = 3;
+    } else {
+      result = 0;
+    }
+    return result;
+  }
+
+  return {
+    playRound
   }
 }
+
