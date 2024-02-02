@@ -24,4 +24,7 @@ const GameController = function () {
       _marker,
     }
   }
+
+  const players = [CreatePlayer('Player One', 'X'), CreatePlayer('Player Two', 'O')];
+
 }
