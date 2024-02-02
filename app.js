@@ -11,3 +11,17 @@ const Gameboard = function () {
     printBoard
   }
 }
+
+const GameController = function () {
+  const board = Gameboard();
+
+  function CreatePlayer(name, marker) {
+    const _name = name;
+    const _marker = marker;
+
+    return {
+      _name,
+      _marker,
+    }
+  }
+}
