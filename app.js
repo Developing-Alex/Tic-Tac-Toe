@@ -130,3 +130,4 @@ const GameController = function () {
   }
 }
 
+const game = GameController();
