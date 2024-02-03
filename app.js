@@ -37,10 +37,15 @@ const Gameboard = function () {
     }
   }
 
+  const clearBoard = (boardArr) => {
+    boardArr = ['','','','','','','','','']
+  }
+
   return {
     getGameboard,
     printBoard,
-    markBoard
+    markBoard,
+    clearBoard
   }
 }
 
@@ -48,7 +53,7 @@ const GameController = function () {
 
   const board = Gameboard();
 
-  function CreatePlayer(name, marker) {
+  function createPlayer(name, marker) {
     const _name = name;
     const _marker = marker;
 
@@ -58,7 +63,7 @@ const GameController = function () {
     }
   }
 
-  const players = [CreatePlayer('Player One', 'X'), CreatePlayer('Player Two', 'O')];
+  const players = [createPlayer('Player One', 'X'), createPlayer('Player Two', 'O')];
 
   let activePlayer = players[0];
 
@@ -128,8 +133,26 @@ const GameController = function () {
   printNewRound();
 
   return {
-    playRound
+    playRound,
+    createPlayer
   }
 }
 
-const game = GameController();
+const displayController = (function(){
+  const board = Gameboard();
+  const game = GameController();
+
+  const newGameBtn = document.getElementById('new-game-btn');
+  const gameContainer = document.getElementById('game-container');
+
+  function newGame(){
+    board.clearBoard(board.getGameboard());
+    newGameBtn.style.visibility = 'hidden';
+    gameContainer.style.visibility = 'initial';
+  }
+
+
+
+  newGameBtn.addEventListener('click', newGame);
+
+})();
