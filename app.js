@@ -8,37 +8,39 @@ const Gameboard = function () {
   const markBoard = (move, player) => {
     switch (move) {
       case move = 0:
-        board.splice(0, 1, player);
+        getGameboard().splice(0, 1, player);
         break;
       case move = 1:
-        board.splice(1, 1, player);
+        getGameboard().splice(1, 1, player);
         break;
       case move = 2:
-        board.splice(2, 1, player);
+        getGameboard().splice(2, 1, player);
         break;
       case move = 3:
-        board.splice(3, 1, player);
+        getGameboard().splice(3, 1, player);
         break
       case move = 4:
-        board.splice(4, 1, player);
+        getGameboard().splice(4, 1, player);
         break;
       case move = 5:
-        board.splice(5, 1, player);
+        getGameboard().splice(5, 1, player);
         break;
       case move = 6:
-        board.splice(6, 1, player);
+        getGameboard().splice(6, 1, player);
         break;
       case move = 7:
-        board.splice(7, 1, player);
+        getGameboard().splice(7, 1, player);
         break;
       case move = 8:
-        board.splice(8, 1, player);
+        getGameboard().splice(8, 1, player);
         break;
     }
   }
 
   const clearBoard = (boardArr) => {
-    boardArr = ['','','','','','','','','']
+    for(let i = 0; i < boardArr.length; i++){
+      boardArr[i] = '';
+    }
   }
 
   return {
@@ -130,11 +132,18 @@ const GameController = function () {
     return result;
   }
 
+  function restartGame(){
+    board.clearBoard(board.getGameboard());
+    activePlayer = players[0];
+    printNewRound();
+  }
+
   printNewRound();
 
   return {
-    playRound,
-    createPlayer
+    playRound, 
+    getActivePlayer,
+    restartGame
   }
 }
 
@@ -143,16 +152,36 @@ const displayController = (function(){
   const game = GameController();
 
   const newGameBtn = document.getElementById('new-game-btn');
+  const restartBtn = document.getElementById('restart-game-btn');
   const gameContainer = document.getElementById('game-container');
+  const squares = document.querySelectorAll('.squares');
 
   function newGame(){
-    board.clearBoard(board.getGameboard());
-    newGameBtn.style.visibility = 'hidden';
+    newGameBtn.style.display = 'none';
     gameContainer.style.visibility = 'initial';
   }
 
+  newGameBtn.onclick = newGame;
 
 
-  newGameBtn.addEventListener('click', newGame);
+
+  restartBtn.addEventListener('click', e => {
+    if(e){
+      game.restartGame();
+      squares.forEach(square => {
+        square.textContent = '';
+      })
+    }
+  })
+
+  squares.forEach(square => {
+    square.addEventListener('click', e => {
+      if(e){
+        restartBtn.style.display = 'block';
+        e.target.textContent = game.getActivePlayer()._marker;
+        game.playRound(parseInt(e.target.dataset.squaresIndex))
+      }
+    })
+  })
 
 })();

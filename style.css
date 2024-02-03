@@ -102,6 +102,19 @@ h2 {
   cursor: pointer;
 }
 
+#restart-game-btn {
+  width: 125px;
+  justify-self: unset;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  color: whitesmoke;
+  font-weight: bold;
+  background-color: black;
+  cursor: pointer;
+  display: none;
+}
+
 #game-container {
   grid-row: 3;
   display: grid;
