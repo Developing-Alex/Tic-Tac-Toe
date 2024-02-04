@@ -28,7 +28,7 @@ header {
 }
 
 #win-container {
-  display: none; /*flex*/
+  display: none; 
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
