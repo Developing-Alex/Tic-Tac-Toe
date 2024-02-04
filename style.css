@@ -27,19 +27,12 @@ header {
   background-color: rgba(0, 0, 0, 0.701);
 }
 
-dialog {
-  background-color: rgba(255, 0, 255, 0.312);
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  visibility: hidden;
-}
-
-form {
-  display: flex;
+#win-container {
+  display: none; /*flex*/
   flex-direction: column;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
   align-items: center;
   justify-content: center;
   gap: 30px;
@@ -50,20 +43,45 @@ form {
   border: rgb(255, 0, 255) 2px solid;
 }
 
-#markers-container {
-  display: flex;
-  gap: 60px;
-}
-
-.markers {
-  font-size: 3rem;
+.winner {
+  font-size: 2.5rem;
   font-weight: bold;
-  border: none !important;
   text-align: center;
   background-color: rgba(0, 0, 0, 0);
   color: rgb(255, 255, 225);
   text-shadow: 2px 2px 8px rgb(255, 0, 255);
+}
+
+#play-again {
+  width: 125px;
+  justify-self: unset;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
   cursor: pointer;
+  font-weight: bold;
+  color: rgb(255, 255, 225);
+  background-color: rgba(0, 0, 0);
+  border: rgb(255, 0, 255) 2px solid;
+}
+
+#play-again:hover {
+  text-shadow: 0px 0px 15px rgb(255, 0, 255);
+  box-shadow: 0px 0px 25px rgb(255, 255, 0);
+  background-color: rgba(0, 0, 0, 0.900);
+  transition: all 0.4s ease 0s;
+}
+
+#player-one-win {
+  display: none;
+}
+
+#player-two-win {
+  display: none;
+}
+
+#draw {
+  display: none;
 }
 
 h1 {
@@ -74,13 +92,6 @@ h1 {
   text-shadow: 2px 2px 8px rgb(255, 0, 255);
   letter-spacing: 5px;
   margin: 35px 0px;
-}
-
-h2 {
-  font-size: 1.75rem;
-  margin-top: 0;
-  color: rgb(255, 255, 255);
-  text-shadow: 2px 2px 8px rgb(255, 0, 255);
 }
 
 .app-container {
@@ -100,6 +111,14 @@ h2 {
   font-weight: bold;
   background-color: black;
   cursor: pointer;
+  border: rgb(255, 0, 255) 2px solid;
+}
+
+#new-game-btn:hover {
+  text-shadow: 0px 0px 15px rgb(255, 0, 255);
+  box-shadow: 0px 0px 25px rgb(255, 255, 0);
+  background-color: rgba(0, 0, 0, 0.900);
+  transition: all 0.4s ease 0s;
 }
 
 #restart-game-btn {
@@ -113,12 +132,20 @@ h2 {
   background-color: black;
   cursor: pointer;
   display: none;
+  border: rgb(255, 0, 255) 2px solid;
+}
+
+#restart-game-btn:hover {
+  text-shadow: 0px 0px 15px rgb(255, 0, 255);
+  box-shadow: 0px 0px 25px rgb(255, 255, 0);
+  background-color: rgba(0, 0, 0, 0.900);
+  transition: all 0.4s ease 0s;
 }
 
 #game-container {
   grid-row: 3;
   display: grid;
-  visibility: hidden;
+  visibility: collapse;
   justify-self: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
