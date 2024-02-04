@@ -79,7 +79,7 @@ const GameController = function () {
     board.markBoard(move, getActivePlayer()._marker);
     switchPlayerTurn();
     printNewRound(); 
-    checkWinner(board.getGameboard());
+    return checkWinner(board.getGameboard());
   }
 
   const printNewRound = () => {
@@ -93,9 +93,10 @@ const GameController = function () {
     }else{
     console.log(`${getActivePlayer()._name}'s turn.`);
     }
-  };
+  };  
 
   const checkWinner = (boardArr) => {
+    
     let result;
     let draw = true;
     
@@ -143,11 +144,12 @@ const GameController = function () {
   return {
     playRound, 
     getActivePlayer,
-    restartGame
+    restartGame,
+    checkWinner,
   }
 }
 
-const displayController = (function(){
+const DisplayController = (function(){
   const board = Gameboard();
   const game = GameController();
 
@@ -155,6 +157,11 @@ const displayController = (function(){
   const restartBtn = document.getElementById('restart-game-btn');
   const gameContainer = document.getElementById('game-container');
   const squares = document.querySelectorAll('.squares');
+  const winContainer = document.getElementById('win-container');
+  const playerOneWins = document.getElementById('player-one-win');
+  const playerTwoWins = document.getElementById('player-two-win');
+  const draw = document.getElementById('draw');
+  
 
   function newGame(){
     newGameBtn.style.display = 'none';
@@ -164,9 +171,9 @@ const displayController = (function(){
   newGameBtn.onclick = newGame;
 
 
-
   restartBtn.addEventListener('click', e => {
     if(e){
+      restartBtn.style.display = 'none';
       game.restartGame();
       squares.forEach(square => {
         square.textContent = '';
@@ -174,14 +181,44 @@ const displayController = (function(){
     }
   })
 
-  squares.forEach(square => {
+  function renderSquares(){
+    squares.forEach(square => {
     square.addEventListener('click', e => {
       if(e){
         restartBtn.style.display = 'block';
         e.target.textContent = game.getActivePlayer()._marker;
-        game.playRound(parseInt(e.target.dataset.squaresIndex))
+        displayWinner(game.playRound(parseInt(e.target.dataset.squaresIndex)));
       }
     })
   })
+};
+
+renderSquares();
+
+  function displayWinner(result){
+    if(result === 1){
+      console.log(game.checkWinner(board.getGameboard()))
+      winContainer.style.display = 'flex';
+      winContainer.style.gridRow = '3';
+      gameContainer.style.display = 'none';
+      gameContainer.style.visibility = 'hidden';
+      playerOneWins.style.display = 'block';
+      restartBtn.style.display = 'none';
+    }else if(result === 2){
+      winContainer.style.display = 'flex';
+      winContainer.style.gridRow = '3';
+      gameContainer.style.display = 'none';
+      playerTwoWins.style.display = 'block';
+      restartBtn.style.display = 'none';
+    }else if(result === 3){
+      winContainer.style.display = 'flex';
+      winContainer.style.gridRow = '3';
+      gameContainer.style.display = 'none';
+      draw.style.display = 'block';
+      restartBtn.style.display = 'none';
+    }
+  };
+
+
 
 })();
