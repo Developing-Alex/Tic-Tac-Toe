@@ -1,10 +1,13 @@
 const Gameboard = function () {
   const board = ['', '', '', '', '', '', '', '', ''];
   
+  //Keeps board array private yet visually accessible to other parts of the program
   const getGameboard = () => board;
   
+  //Prints boarf to the console
   const printBoard = () => console.log(getGameboard());
 
+  //Allows to board to be updated
   const markBoard = (move, player) => {
     switch (move) {
       case move = 0:
@@ -37,12 +40,14 @@ const Gameboard = function () {
     }
   }
 
+  //Returns board indicies to original states
   const clearBoard = (boardArr) => {
     for(let i = 0; i < boardArr.length; i++){
       boardArr[i] = '';
     }
   }
 
+  //Allows other parts of program access to specified functions within Gameboard
   return {
     getGameboard,
     printBoard,
@@ -55,6 +60,7 @@ const GameController = function () {
 
   const board = Gameboard();
 
+  //Used to create our player objects
   function createPlayer(name, marker) {
     const _name = name;
     const _marker = marker;
@@ -69,12 +75,14 @@ const GameController = function () {
 
   let activePlayer = players[0];
 
+  //used in playRound to switch whose turn it is
   const switchPlayerTurn = () => {
     activePlayer = activePlayer === players[0] ? players[1] : players[0];
   };
 
   const getActivePlayer = () => activePlayer;
 
+  //Controls the flow of each round to the game
   const playRound = (move) => {
     board.markBoard(move, getActivePlayer()._marker);
     switchPlayerTurn();
@@ -82,6 +90,7 @@ const GameController = function () {
     return checkWinner(board.getGameboard());
   }
 
+  //prints each updated move to the board array and end game result to the console
   const printNewRound = () => {
     board.printBoard();
     if (checkWinner(board.getGameboard()) === 1){
@@ -95,6 +104,7 @@ const GameController = function () {
     }
   };  
 
+  //determines end of game
   const checkWinner = (boardArr) => {
     
     let result;
@@ -133,9 +143,14 @@ const GameController = function () {
     return result;
   }
 
+  //uses board.clearBoard to return board to original state
+  //returns active player to original state
+  //clears console
+  //prints restarted game state
   function restartGame(){
     board.clearBoard(board.getGameboard());
     activePlayer = players[0];
+    console.clear();
     printNewRound();
   }
 
@@ -163,7 +178,7 @@ const DisplayController = (function(){
   const draw = document.getElementById('draw');
   const playAgainBtn = document.getElementById('play-again');
   
-
+  //hides newGameBtn and shows the gameBoard
   function newGame(){
     newGameBtn.style.display = 'none';
     gameContainer.style.visibility = 'initial';
@@ -171,22 +186,25 @@ const DisplayController = (function(){
 
   newGameBtn.onclick = newGame;
 
-
+  //handles restartBtn events
   restartBtn.addEventListener('click', e => {
     if(e){
       restartBtn.style.display = 'none';
       game.restartGame();
       squares.forEach(square => {
         square.textContent = '';
+        square.style.pointerEvents = 'initial';
       })
     }
   })
 
+  //handles playAgainBtn events
   playAgainBtn.addEventListener('click', e => {
     if(e){
       game.restartGame();
       squares.forEach(square => {
         square.textContent = '';
+        square.style.pointerEvents = 'initial';
       });
       winContainer.style.display = 'none';
       gameContainer.style.display = 'grid';
@@ -197,12 +215,14 @@ const DisplayController = (function(){
     }
   })
 
+  //handles events associated with clicking game squares
   function renderSquares(){
     squares.forEach(square => {
     square.addEventListener('click', e => {
       if(e){
         restartBtn.style.display = 'block';
         e.target.textContent = game.getActivePlayer()._marker;
+        e.target.style.pointerEvents = 'none';
         displayWinner(game.playRound(parseInt(e.target.dataset.squaresIndex)));
       }
     })
@@ -211,9 +231,9 @@ const DisplayController = (function(){
 
 renderSquares();
 
+  //used to display end of game results 
   function displayWinner(result){
     if(result === 1){
-      console.log(game.checkWinner(board.getGameboard()))
       winContainer.style.display = 'flex';
       winContainer.style.gridRow = '3';
       gameContainer.style.display = 'none';
