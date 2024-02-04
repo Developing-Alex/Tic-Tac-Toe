@@ -161,6 +161,7 @@ const DisplayController = (function(){
   const playerOneWins = document.getElementById('player-one-win');
   const playerTwoWins = document.getElementById('player-two-win');
   const draw = document.getElementById('draw');
+  const playAgainBtn = document.getElementById('play-again');
   
 
   function newGame(){
@@ -178,6 +179,21 @@ const DisplayController = (function(){
       squares.forEach(square => {
         square.textContent = '';
       })
+    }
+  })
+
+  playAgainBtn.addEventListener('click', e => {
+    if(e){
+      game.restartGame();
+      squares.forEach(square => {
+        square.textContent = '';
+      });
+      winContainer.style.display = 'none';
+      gameContainer.style.display = 'grid';
+      gameContainer.style.visibility = 'initial';
+      playerOneWins.style.display = 'none';
+      playerTwoWins.style.display = 'none';
+      draw.style.display = 'none';
     }
   })
 
