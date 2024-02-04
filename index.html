@@ -16,9 +16,9 @@
     <header>
       <h1>Tic Tac Toe</h1>
     </header>
-    
+
     <div class="app-container">
-      <button id="new-game-btn">New Game</button>
+      <button class="new-game" id="new-game-btn">New Game</button>
       <button id="restart-game-btn">Restart</button>
       <div id="game-container">
         <div data-squares-index="0" class="squares"></div>
@@ -32,17 +32,15 @@
         <div data-squares-index="8" class="squares"></div>
       </div>
     </div>
-    <!--
-    <dialog>
-      <form action="app.js" method="dialog">
-        <h2>Choose Your Marker</h2>
-        <div id="markers-container">
-          <input class="markers" id="X-marker" type="button" value="X">
-          <input class="markers" id="O-marker" type="button" value="O">
-        </div>
-      </form>
-    </dialog>
-  -->
+
+
+    <div id="win-container">
+      <div class="winner" id="player-one-win">Player One Wins!</div>
+      <div class="winner" id="player-two-win">Player Two Wins!</div>
+      <div class="winner" id="draw">It's a draw!</div>
+      <button id="play-again">Play Again</button>
+    </div>
+
     <p id="credit">Photo by<a
         href="https://unsplash.com/@wilmerlens?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Wilmer
         Martinez</a> on <a
